@@ -1,5 +1,10 @@
 package com.example.guille.juegomaps;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -13,6 +18,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+
+    private static final String TAG = "gpslog";
+    private LocationManager mLocMgr;
+    public static double latidud, longitud;
+
+    //definimos tiempo entre updates
+    private static final long MIN_CAMBIO_DISTANCIA_PARA_UPDATES = (long) 1; // 1 metro
+    //Minimo tiempo para updates en Milisegundos
+    private static final long MIN_TIEMPO_ENTRE_UPDATES = 250; // 1 sg
+
+    Location miPosicion = new Location("mi posicion");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +53,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
