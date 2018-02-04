@@ -21,7 +21,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class qr extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
 
-    static final String TAG = "escaneoQR";
+    static final String TAG = "QR";
     private static final int MY_PERMISSIONS = 1 ;
 
     @Override
@@ -55,6 +55,7 @@ public class qr extends AppCompatActivity implements ZXingScannerView.ResultHand
             }
         }
     }
+
 
     @Override
     public void onResume() {
