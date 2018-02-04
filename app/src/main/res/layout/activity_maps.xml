@@ -1,3 +1,8 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,3 +11,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.guille.juegomaps.MapsActivity" />
+
+    <TextView
+        android:id="@+id/latitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="14dp"
+        android:text="latitud" />
+
+    <TextView
+        android:id="@+id/longitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/latitud"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/latitud"
+        android:text="longitud" />
+
+    <TextView
+        android:id="@+id/objetivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/longitud"
+        android:layout_alignBottom="@+id/longitud"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="52dp"
+        android:text="Objetivo" />
+
+    <Button
+        android:id="@+id/qr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:onClick="lanzaQr"
+        android:text="Qr" />
+
+
+
+</RelativeLayout>
