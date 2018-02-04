@@ -1,6 +1,7 @@
 package com.example.guille.juegomaps;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -13,6 +14,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -142,7 +144,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 new MarkerOptions()
                         .position(colegio)
                         .title("banana")//descripcion kiosco
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.Icono));//icono
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.icono));//icono
 
 
         marker = googleMap.addMarker(markerOptions);
@@ -154,7 +156,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 new MarkerOptions()
                         .position(tesoro2)
                         .title("banana")//descripcion pizza
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.Icono));//icono
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.icono));//icono
 
 
         marker2 = googleMap.addMarker(markerOptions2);
@@ -166,7 +168,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 new MarkerOptions()
                         .position(tesoro3)
                         .title("banana")//descripcion callejon
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.Icono));//icono
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.icono));//icono
 
 
         marker3 = googleMap.addMarker(markerOptions3);
@@ -178,7 +180,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 new MarkerOptions()
                         .position(tesoro4)
                         .title("banana")//descripcion fuente
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.Icono));//icono
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.icono));//icono
 
 
         marker4 = googleMap.addMarker(markerOptions4);
@@ -231,7 +233,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             marcador=mMap.addMarker(new MarkerOptions()
                     .position(coordenadas)
                     .title("Tu posicion actual")
-                    
+
             );
             mMap.animateCamera(miUbi);
 
@@ -388,6 +390,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
     };
+
+    //lanzar qr
+    public void lanzaQr(View j){
+
+        Intent qrActivity = new Intent(getApplicationContext(), qr.class);
+        //inciamos la nueva activity
+        startActivity(qrActivity);
+
+
+    }
 
 
 }
