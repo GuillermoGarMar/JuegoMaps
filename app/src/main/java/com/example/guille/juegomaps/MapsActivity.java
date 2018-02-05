@@ -7,11 +7,11 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
@@ -36,9 +36,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private static final int LOCATION_REQUEST_CODE = 1;
     public static Circle circle, circle2, circle3;
+    private final static int codigo = 0;
 
     private static final String TAG = "gpslog";
     private LocationManager mLocMgr;
+    public Intent intento;
     private TextView lat, longt, objetv;
     public static double latidud, longitud;
     public static int distance, distance2, distance3, distance4, distance5;
@@ -80,6 +82,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //podemos usar un network provideer o un gps provider
             mLocMgr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIEMPO_ENTRE_UPDATES, MIN_CAMBIO_DISTANCIA_PARA_UPDATES, locListener, Looper.getMainLooper());
         }
+
+        String salutation = "Adios";
+
+        intento = new Intent(MapsActivity.this, qr.class);
+        intento.putExtra("salutation", salutation);
     }
 
 
@@ -143,7 +150,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions =
                 new MarkerOptions()
                         .position(colegio)
-                        .title("banana")//descripcion kiosco
+                        .title("tesoro")
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.icono));//icono
 
 
@@ -155,7 +162,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions2 =
                 new MarkerOptions()
                         .position(tesoro2)
-                        .title("banana")//descripcion pizza
+                        .title("tesoro")
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.icono));//icono
 
 
@@ -167,7 +174,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions3 =
                 new MarkerOptions()
                         .position(tesoro3)
-                        .title("banana")//descripcion callejon
+                        .title("tesoro")
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.icono));//icono
 
 
@@ -179,7 +186,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions4 =
                 new MarkerOptions()
                         .position(tesoro4)
-                        .title("banana")//descripcion fuente
+                        .title("tesoro")
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.icono));//icono
 
 
@@ -396,7 +403,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Intent qrActivity = new Intent(getApplicationContext(), qr.class);
         //inciamos la nueva activity
-        startActivity(qrActivity);
+        startActivity(intento);
 
 
     }
